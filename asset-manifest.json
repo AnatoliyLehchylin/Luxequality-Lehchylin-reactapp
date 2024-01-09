@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Luxequality-Lehchylin-reactapp/static/css/main.abbb6d33.css",
+    "main.js": "/Luxequality-Lehchylin-reactapp/static/js/main.a1bb381f.js",
+    "static/js/787.8e8ffda9.chunk.js": "/Luxequality-Lehchylin-reactapp/static/js/787.8e8ffda9.chunk.js",
+    "index.html": "/Luxequality-Lehchylin-reactapp/index.html",
+    "main.abbb6d33.css.map": "/Luxequality-Lehchylin-reactapp/static/css/main.abbb6d33.css.map",
+    "main.a1bb381f.js.map": "/Luxequality-Lehchylin-reactapp/static/js/main.a1bb381f.js.map",
+    "787.8e8ffda9.chunk.js.map": "/Luxequality-Lehchylin-reactapp/static/js/787.8e8ffda9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.abbb6d33.css",
+    "static/js/main.a1bb381f.js"
+  ]
+}
