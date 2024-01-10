@@ -16,11 +16,14 @@ const MapComponent = (props) => {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [price, setPrice] = useState('');
+    const [currency, setCurrency] = useState('$')
     const [link, setLink] = useState('');
     const [latitude, setLatitude] = useState('');
     const [longitude, setLongitude] = useState('');
     const [activePostId, setActivePostId] = useState(null);
     const [add, setAdd] = useState(false);
+
+    const linkExample = ['https://starterok.com.ua/article/mark/ford/FORD-Aspire.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxcdDPIKOL6HNvgTaASVReYn_0Zar8FpsHPw&usqp=CAU', 'https://kor.ill.in.ua/m/610x385/1967830.jpg', 'https://glavcom.ua/img/forall/users/50/5047/01_citroen_c3.jpg', 'https://janusmotorcycles.com/wp-content/uploads/2023/01/Halcyon-450cc-image.webp'];
 
     const sliderSettings = {
         dots: false,
@@ -77,6 +80,7 @@ const MapComponent = (props) => {
         setTitle(item.title);
         setText(item.text);
         setPrice(item.price);
+        setCurrency(item.currency);
         setLink(item.link);
         setLatitude(item.latitude);
         setLongitude(item.longitude);
@@ -88,6 +92,7 @@ const MapComponent = (props) => {
         setTitle('');
         setText('');
         setPrice('');
+        setCurrency('$');
         setLink('');
         setLatitude('');
         setLongitude('');
@@ -97,6 +102,7 @@ const MapComponent = (props) => {
         setTitle('');
         setText('');
         setPrice('');
+        setCurrency('$');
         setLink('');
         setLatitude('');
         setLongitude('');
@@ -108,7 +114,7 @@ const MapComponent = (props) => {
     };
 
     const addNewPostPlus = () => {
-        addNewPost(title, text, price, link, latitude, longitude);
+        addNewPost(title, text, price, currency, link, latitude, longitude);
         setAdd(false);
     }
 
@@ -144,6 +150,7 @@ const MapComponent = (props) => {
         setTitle('');
         setText('');
         setPrice('');
+        setCurrency('$');
         setLink('');
         setLatitude('');
         setLongitude('');
@@ -174,37 +181,45 @@ const MapComponent = (props) => {
         }
     }, [selectedMarker]);
 
+    const handleSelectChange = (event) => {
+        setCurrency(event.target.value);
+    };
+
     return (
         <div>
             <div style={{marginTop: "10px"}}>
                 {(!add && !activePostId) && <button className='button' onClick={() => isAdd()}>ADD</button>}
                 {add && (
                     <div>
-                        <input placeholder={'title'} value={title} onChange={titleChange}/>
-                        <input placeholder={'text'} value={text} onChange={textChange}/>
-                        <input placeholder={'price'} value={price} onChange={priceChange}/>
-                        <input placeholder={'link (not necessary)'} value={link} onChange={linkChange}/>
-                        <input placeholder={'latitude'} value={latitude} onChange={latitudeChange}/>
-                        <input placeholder={'longitude'} value={longitude} onChange={longitudeChange}/>
-                        <div style={{fontSize: "15px", color: "gray"}}>(Введіть коордінати місця вручну, або клікніть по
-                            мапі)
-                        </div>
-                        <div style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            fontSize: "15px",
-                            color: "gray"
-                        }}>Приклади посилань на фото:
+                        <input placeholder={'title'} value={title} onChange={titleChange} className='input'/>
+                        <input placeholder={'text'} value={text} onChange={textChange} className='input'/>
+                        <input placeholder={'price'} value={price} onChange={priceChange}
+                               className='input' style={{margin: '0'}}/>
+                        <select id="dropdown" value={currency} onChange={handleSelectChange} className='input'>
+                            <option value="$">$</option>
+                            <option value="€">€</option>
+                            <option value="₴">₴</option>
+                        </select>
+                        <input placeholder={'link to Photo (not necessary)'} value={link} onChange={linkChange}
+                               className='input'/>
+                        <input placeholder={'latitude'} value={latitude} onChange={latitudeChange} className='input'/>
+                        <input placeholder={'longitude'} value={longitude} onChange={longitudeChange}
+                               className='input'/>
+                        <div style={{display: 'flex', margin: '10px 0 5px 55px'}}>
                             <div style={{
-                                paddingLeft: "10px",
-                                textDecoration: "underline",
-                                color: "black"
-                            }}>https://starterok.com.ua/article/mark/ford/FORD-Aspire.jpg</div>
-                            <div style={{
-                                paddingLeft: "10px",
-                                textDecoration: "underline",
-                                color: "black"
-                            }}>https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxcdDPIKOL6HNvgTaASVReYn_0Zar8FpsHPw&usqp=CAU
+                                display: "flex",
+                                justifyContent: "center",
+                                fontSize: "15px",
+                                color: "#284de1",
+                                marginRight: "10px"
+                            }}>Додайте посилання на фото, або клікніть по одному з Link:
+                                {linkExample.map((item, index) => (
+                                    <button key={index} style={{marginLeft: '5px'}}
+                                            onClick={() => setLink(linkExample[index])}>Link {index + 1}</button>
+                                ))}
+                            </div>
+                            <div style={{fontSize: "15px", color: "#284de1",}}>(Введіть коордінати місця
+                                вручну, або клікніть по мапі)
                             </div>
                         </div>
                         <div>
@@ -263,18 +278,28 @@ const MapComponent = (props) => {
 
                                     {activePostId === item._id && (
                                         <div>
-                                            <input value={title} onChange={titleChange}/>
-                                            <textarea style={{marginTop: "2px"}} value={text} onChange={textChange}/>
-                                            <input value={price} onChange={priceChange}/>
+                                            <input value={title} onChange={titleChange} className='input'/>
+                                            <textarea style={{marginTop: "2px"}} value={text} onChange={textChange}
+                                                      className='input'/>
+                                            <input value={price} onChange={priceChange} className='input'
+                                                   style={{width: '125px'}}/>
+                                            <select id="dropdown" value={currency} onChange={handleSelectChange}
+                                                    className='input'>
+                                                <option value="$">$</option>
+                                                <option value="€">€</option>
+                                                <option value="₴">₴</option>
+                                            </select>
                                             <input value={link} onClick={(e) => e.target.select()}
-                                                   onChange={linkChange}/>
-                                            <input value={latitude} onChange={latitudeChange}/>
-                                            <input value={longitude} onChange={longitudeChange}/>
-                                            <div>
+                                                   onChange={linkChange} className='input'/>
+                                            <input value={latitude} onChange={latitudeChange} className='input'/>
+                                            <input value={longitude} onChange={longitudeChange} className='input'/>
+                                            <div style={{marginRight: '10px'}}>
                                                 <button className='button'
-                                                    onClick={() => editPost(item._id, title, text, price, link, latitude, longitude)}>Save
+                                                        onClick={() => editPost(item._id, title, text, price, currency, link, latitude, longitude)}>Save
                                                 </button>
-                                                <button className='button button-delete' onClick={() => isCancel()}>Cancel</button>
+                                                <button className='button button-delete'
+                                                        onClick={() => isCancel()}>Cancel
+                                                </button>
                                             </div>
                                         </div>
                                     )}

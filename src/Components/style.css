@@ -19,3 +19,29 @@
     background-color: #e184ad;
 }
 
+.button-currency {
+    background-color: #e3dfd9;
+    color: #389135;
+    width: 30px;
+    /*height: 30px;*/
+    border-radius: 2px;
+    margin: 0 5px 0 0;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.input {
+    margin-right: 5px;
+    box-shadow: 0 0 15px rgb(113, 112, 122);
+    border: rgb(113, 112, 122) 3px solid;
+    border-radius: 3px;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: 0 0 20px rgba(21, 232, 21, 0.5);
+    border: rgba(4, 44, 4, 0.5) 3px solid;
+}
+

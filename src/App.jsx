@@ -5,14 +5,14 @@ import MapComponent from './Components/mapComponent.jsx';
 function App() {
     const [data, setData] = useState([]);
 
-    const addNewPost = async (title, text, price, link, latitude, longitude) => {
+    const addNewPost = async (title, text, price, currency, link, latitude, longitude) => {
         try {
             await fetch(process.env.REACT_APP_API_URL, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
                 },
-                body: JSON.stringify({title, text, price, link, latitude, longitude}),
+                body: JSON.stringify({title, text, price, currency, link, latitude, longitude}),
             });
             await fetchPosts();
         } catch (err) {
@@ -20,14 +20,14 @@ function App() {
         }
     };
 
-    const editPost = async (id, title, text, price, link, latitude, longitude) => {
+    const editPost = async (id, title, text, price, currency, link, latitude, longitude) => {
         try {
             await fetch(`${process.env.REACT_APP_API_URL}/${id}`, {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json",
                 },
-                body: JSON.stringify({title, text, price, link, latitude, longitude}),
+                body: JSON.stringify({title, text, price, currency, link, latitude, longitude}),
             });
             await fetchPosts();
         } catch (err) {
