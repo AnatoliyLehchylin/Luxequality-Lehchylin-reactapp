@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Luxequality-Lehchylin-reactapp/static/css/main.4fd0e9cc.css",
-    "main.js": "/Luxequality-Lehchylin-reactapp/static/js/main.59f9609a.js",
+    "main.js": "/Luxequality-Lehchylin-reactapp/static/js/main.0c34926f.js",
     "static/js/787.8e8ffda9.chunk.js": "/Luxequality-Lehchylin-reactapp/static/js/787.8e8ffda9.chunk.js",
     "index.html": "/Luxequality-Lehchylin-reactapp/index.html",
     "main.4fd0e9cc.css.map": "/Luxequality-Lehchylin-reactapp/static/css/main.4fd0e9cc.css.map",
-    "main.59f9609a.js.map": "/Luxequality-Lehchylin-reactapp/static/js/main.59f9609a.js.map",
+    "main.0c34926f.js.map": "/Luxequality-Lehchylin-reactapp/static/js/main.0c34926f.js.map",
     "787.8e8ffda9.chunk.js.map": "/Luxequality-Lehchylin-reactapp/static/js/787.8e8ffda9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4fd0e9cc.css",
-    "static/js/main.59f9609a.js"
+    "static/js/main.0c34926f.js"
   ]
 }
