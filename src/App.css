@@ -38,3 +38,21 @@
     transform: rotate(360deg);
   }
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  color: #fa0404;
+  font-size: 28px;
+  font-weight: 600;
+  animation: blink 400ms alternate infinite;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}

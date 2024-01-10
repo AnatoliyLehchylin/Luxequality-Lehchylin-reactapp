@@ -4,6 +4,7 @@ import MapComponent from './Components/mapComponent.jsx';
 
 function App() {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const addNewPost = async (title, text, price, currency, link, latitude, longitude) => {
         try {
@@ -50,6 +51,7 @@ function App() {
         try {
             const res = await fetch(process.env.REACT_APP_API_URL);
             const json = await res.json();
+            setLoading(false);
             const dataArray = json.data;
             setData(dataArray.reverse());
         } catch (error) {
@@ -63,6 +65,7 @@ function App() {
 
     return (
         <div className="App">
+            {loading && <div className='loading'>LOADING...</div>}
             <MapComponent data={data} deletePost={deletePost} editPost={editPost} addNewPost={addNewPost}/>
         </div>
     );
