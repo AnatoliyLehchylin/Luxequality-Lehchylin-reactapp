@@ -205,7 +205,7 @@ const MapComponent = (props) => {
                         <input placeholder={'latitude'} value={latitude} onChange={latitudeChange} className='input'/>
                         <input placeholder={'longitude'} value={longitude} onChange={longitudeChange}
                                className='input'/>
-                        <div style={{display: 'flex', margin: '10px 0 5px 55px'}}>
+                        <div style={{display: 'flex', justifyContent: 'center', margin: '10px 0 5px 0'}}>
                             <div style={{
                                 display: "flex",
                                 justifyContent: "center",
